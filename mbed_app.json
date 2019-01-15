@@ -1,0 +1,108 @@
+{
+    "macros": [
+        "ARM_UC_USE_PAL_BLOCKDEVICE=1",
+        "MBED_CLOUD_CLIENT_UPDATE_STORAGE=ARM_UCP_FLASHIAP_BLOCKDEVICE",
+        "MBED_CLIENT_USER_CONFIG_FILE=\"mbed_cloud_client_user_config.h\"",
+        "MBED_CLOUD_CLIENT_USER_CONFIG_FILE=\"mbed_cloud_client_user_config.h\"",
+        "PAL_USER_DEFINED_CONFIGURATION=\"sotp_fs_config_MbedOS.h\"",
+        "PAL_FS_MOUNT_POINT_PRIMARY=\"/fs\"",
+        "MBEDTLS_USER_CONFIG_FILE=\"mbedTLSConfig_mbedOS.h\""
+    ],
+    "target_overrides": {
+        "*": {
+            "platform.stdio-baud-rate"          : 115200,
+            "platform.stdio-convert-newlines"   : true,
+            "mbed-trace.enable"                 : false
+        },
+        "MTB_ADV_WISE_1570": {
+            "events.shared-stacksize"           : 1408,
+            "nanostack-hal.event_loop_thread_stack_size" : 5120,
+            "platform.stdio-baud-rate"          : 115200,
+            "target.features_add"               : ["BOOTLOADER"],
+            "mcc_transport_mode"                : 2,
+            "spif-driver.SPI_FREQ"              : 20000000,
+            "target.components_add"             : ["SPIF"],
+            "platform.default-serial-baud-rate" : 9600,
+            "target.network-default-interface-type" : "CELLULAR",
+            "cellular.debug-at"                 : false,
+            "cellular.use-apn-lookup"           : false,
+            "mbed-client.sn-coap-duplication-max-msgs-count": 1,
+            "mbed-client.reconnection-count"    : 6,
+            "mbed-client.reconnection-interval" : 20,
+            "nsapi.dns-response-wait-time"      : 30000,
+            "client_app.pal_dtls_peer_min_timeout" : "20000",
+            "flash-start-address"               : "0x08000000",
+            "flash-size"                        : "(1024*1024)",
+            "sotp-section-1-address"            : "(MBED_CONF_APP_FLASH_START_ADDRESS + MBED_CONF_APP_FLASH_SIZE - 2*(4*1024))",
+            "sotp-section-1-size"               : "(4*1024)",
+            "sotp-section-2-address"            : "(MBED_CONF_APP_FLASH_START_ADDRESS + MBED_CONF_APP_FLASH_SIZE - 1*(4*1024))",
+            "sotp-section-2-size"               : "(4*1024)",
+            "sotp-num-sections"                 : 2,
+            "target.bootloader_img"             : "bootloader/mbed-bootloader-MTB_ADV_WISE_1570.bin",
+            "target.header_offset"              : "0x8000",
+            "target.app_offset"                 : "0x8400",
+            "target.OUTPUT_EXT"                 : "hex",
+            "update-client.application-details" : "(MBED_CONF_APP_FLASH_START_ADDRESS + 32*1024)",
+            "update-client.storage-address"     : "(1024*1024*2)",
+            "update-client.storage-size"        : "(1024*1024*1)",
+            "update-client.storage-locations"   : "1",
+            "pal-udp-mtu-size"                  : 1358
+        }
+    },
+    "config": {
+        "format-storage-layer-on-error": {
+            "help": "Whether to format the storage layer when it cannot be read - always disable for production devices!",
+            "value": 1
+        },
+        "developer-mode": {
+            "help": "Enable Developer mode to skip Factory enrollment",
+            "value": 1
+        },
+        "main-stack-size": {
+            "value": 5120
+        },
+        "flash-start-address": {
+            "help": "Start address of internal flash. Only used in this config to help the definition of other macros.",
+            "value": null
+        },
+        "flash-size": {
+            "help": "Total size of internal flash. Only used in this config to help the definition of other macros.",
+            "value": null
+        },
+        "sotp-section-1-address": {
+            "help": "Flash sector address for SOTP sector 1",
+            "macro_name": "PAL_INTERNAL_FLASH_SECTION_1_ADDRESS",
+            "value": null
+        },
+        "sotp-section-1-size": {
+            "help": "Flash sector size for SOTP sector 1",
+            "macro_name": "PAL_INTERNAL_FLASH_SECTION_1_SIZE",
+            "value": null
+        },
+        "sotp-section-2-address": {
+            "help": "Flash sector address for SOTP sector 2",
+            "macro_name": "PAL_INTERNAL_FLASH_SECTION_2_ADDRESS",
+            "value": null
+        },
+        "sotp-section-2-size": {
+            "help": "Flash sector size for SOTP sector 2",
+            "macro_name": "PAL_INTERNAL_FLASH_SECTION_2_SIZE",
+            "value": null
+        },
+        "sotp-num-sections": {
+            "help": "Number of SOTP sections",
+            "macro_name": "PAL_INT_FLASH_NUM_SECTIONS",
+            "value": null
+        },
+        "pal-udp-mtu-size": {
+            "help": "Enforced usage of MTU limits",
+            "macro_name": "PAL_UDP_MTU_SIZE",
+            "value": null
+        },
+        "mcc_transport_mode": {
+            "help": "0 = TCP, 2 = UDP, 3 = UDP_QUEUE_MODE",
+            "macro_name": "MBED_CLOUD_CLIENT_TRANSPORT_MODE",
+            "value": null
+        }
+    }
+}
