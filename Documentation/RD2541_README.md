@@ -10,7 +10,7 @@ Note: references to Mbed Cloud and Pelion Device Managament are interchangeable.
 1. Hardware:
     * RD2541 based board or platform (the application was developed and tested using the Example Implemenation Hardware - MCB/MTB
     * A micro USB cable
-    * A NB-IoT SIM
+    * An NB-IoT SIM Card
 
 2. Software:
     * mbed CLI - https://github.com/ARMmbed/mbed-cli
