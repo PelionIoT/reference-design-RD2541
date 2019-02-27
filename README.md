@@ -26,3 +26,4 @@ Built on mbedOS, and includes Pelion Device Manager. This application has been c
 |v1.0 | 5.11.0	| 2.1.1	| 15/01/2019 | Initial Release
 | |  |  |   |
 
+Back to [Reference Designs](https://github.com/ARMmbed/reference-designs)
